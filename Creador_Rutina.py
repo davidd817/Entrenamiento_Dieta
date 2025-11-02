@@ -762,7 +762,7 @@ def generar_excel_rutina(routine):
     ws_planning.title = "Planning y Guía"
     
     cliente_nombre = routine['cliente'] if routine['cliente'] else "Cliente"
-    dias_necesarios = [f"Día {i+1}" for i in range(routine['num_dias'])]
+    dias_necesarios = [f'Día {i+1}' for i in range(routine['num_dias'])]
     
     # Título
     ws_planning['A1'] = "PROGRAMA DE ENTRENAMIENTO"
@@ -1044,8 +1044,24 @@ with st.sidebar:
     with col1:
         semanas = st.number_input("Semanas", 4, 16, 8)
     with col2:
-        num_dias_nuevo = st.number_input("Días/sem", 2, 7, 4)
+        num_dias_nuevo = st.number_input("Días/sem", 2, 7, st.session_state.routine['num_dias'])
+        
+        # SI CAMBIA EL NÚMERO DE DÍAS
         if num_dias_nuevo != st.session_state.routine['num_dias']:
+            dias_actuales = list(st.session_state.routine['dias'].keys())
+            dias_necesarios = [f'Día {i+1}' for i in range(num_dias_nuevo)]
+            
+            # ELIMINAR días que sobran
+            for dia in dias_actuales:
+                if dia not in dias_necesarios:
+                    del st.session_state.routine['dias'][dia]
+            
+            # CREAR días que faltan
+            for dia in dias_necesarios:
+                if dia not in st.session_state.routine['dias']:
+                    st.session_state.routine['dias'][dia] = {'nombre': '', 'ejercicios': []}
+            
+            # Actualizar contador
             st.session_state.routine['num_dias'] = num_dias_nuevo
             st.rerun()
     
@@ -1088,12 +1104,17 @@ if st.session_state.routine['vista'] == 'planificacion':
     routine = st.session_state.routine
     
     # Inicializar días con estructura mejorada
-    dias_necesarios = [f"Día {i+1}" for i in range(routine['num_dias'])]
+    dias_necesarios = [f'Día {i+1}' for i in range(routine['num_dias'])]
+    
+    # IMPORTANTE: Asegurar que todos los días existen
     for dia in dias_necesarios:
         if dia not in routine['dias']:
             routine['dias'][dia] = {'nombre': '', 'ejercicios': []}
+        # Validar estructura
         elif 'ejercicios' not in routine['dias'][dia]:
-            routine['dias'][dia] = {'nombre': '', 'ejercicios': routine['dias'][dia] if isinstance(routine['dias'][dia], list) else []}
+            routine['dias'][dia]['ejercicios'] = []
+        elif not isinstance(routine['dias'][dia]['ejercicios'], list):
+            routine['dias'][dia]['ejercicios'] = []
     
     # Limpiar días extras
     dias_actuales = list(routine['dias'].keys())
@@ -1566,3 +1587,4 @@ elif st.session_state.routine['vista'] == 'visualizacion':
 # ============================================================================
 st.markdown("---")
 st.caption("🔬 **Constructor de Rutina** | David López - Entrenador Personal")
+

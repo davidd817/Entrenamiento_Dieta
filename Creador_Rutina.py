@@ -188,6 +188,7 @@ EJERCICIOS_DB = {
     "Cuádriceps": {
         "General": [
             "Sentadilla back", 
+            "Sentadilla isométrica espalda apoyada",
             "Sentadilla frontal", 
             "Prensa 45°", 
             "Hack squat", 

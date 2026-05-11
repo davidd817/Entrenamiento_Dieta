@@ -44,6 +44,7 @@ REGIONES_MAP = {
     "Glúteo": ["Glúteo mayor", "Glúteo medio"],
     "Bíceps": ["General"],
     "Tríceps": ["General"],
+    "Aductor": ["General"],
     "Core": ["Recto abdominal", "Oblicuos", "Transverso"],
     "Gemelos": ["Gastrocnemio", "Sóleo"]
 }

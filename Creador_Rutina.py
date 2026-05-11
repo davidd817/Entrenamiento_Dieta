@@ -147,7 +147,7 @@ EJERCICIOS_DB = {
         "Anterior": [
             "Press militar barra", 
             "Press militar sentado multipower",
-            "Press mancuernas sentado", 
+            "Press hombro mancuernas sentado", 
             "Press militar máquina",
             "Press Arnold", 
             "Press landmine unilateral", 

@@ -31,7 +31,7 @@ st.set_page_config(
 # ============================================================================
 GRUPOS_MUSCULARES = [
     "Pectoral", "Espalda", "Hombro", "Cuádriceps", "Femoral", 
-    "Glúteo", "Bíceps", "Tríceps", "Core", "Gemelos"
+    "Glúteo", "Bíceps", "Tríceps", "Aductor", "Core", "Gemelos"
 ]
 
 REGIONES_MAP = {

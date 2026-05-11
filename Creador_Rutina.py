@@ -30,7 +30,7 @@ st.set_page_config(
 # BASE DE DATOS DE EJERCICIOS
 # ============================================================================
 GRUPOS_MUSCULARES = [
-    "Pectoral", "Espalda", "Hombro", "Cuádriceps", "Femoral", 
+    "Pecho", "Espalda", "Hombro", "Cuádriceps", "Femoral", 
     "Glúteo", "Bíceps", "Tríceps", "Aductor", "Core", "Gemelos"
 ]
 
@@ -210,7 +210,7 @@ EJERCICIOS_DB = {
             "Leg extension unilateral", 
         ],
     },
-    "Isquiosurales": {
+    "Femoral": {
         "General": [
             "Peso muerto rumano",
             "Peso muerto mancuernas",

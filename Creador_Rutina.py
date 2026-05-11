@@ -85,7 +85,7 @@ EJERCICIOS_DB = {
             "Fondos pectorales inclinación adelante", 
             "Cruces cable de alto a bajo arrodillado"
         ],
-    }, NOTA para hacer bien los ejercicios: Realizar trayectorias convergentes, es decir, empujar hacia arriba y hacia dentro (tocas con el bíceps el pecho)
+    }, 
     "Espalda": {
         "Dorsal": [
             "Dominadas pronación agarre ancho", 
@@ -130,7 +130,6 @@ EJERCICIOS_DB = {
             "Peso muerto", 
             "Remo mancuerna inclinado 45°", 
             "Remo Kroc"
-NOTA (trapecio): codos ligeramente abiertos y contraer escápulas
         ],
         "Erectores espinales": [
             "Peso muerto convencional", 

@@ -30,16 +30,17 @@ st.set_page_config(
 # BASE DE DATOS DE EJERCICIOS
 # ============================================================================
 GRUPOS_MUSCULARES = [
-    "Pecho", "Espalda", "Hombro", "Cuádriceps", "Isquiosurales", 
+    "Pectoral", "Espalda", "Hombro", "Cuádriceps", "Femoral", 
     "Glúteo", "Bíceps", "Tríceps", "Core", "Gemelos"
 ]
 
 REGIONES_MAP = {
     "Pecho": ["Superior", "Medio", "Inferior"],
-    "Espalda": ["Dorsal", "Trapecio medio/bajo", "Erectores espinales"],
+    "Espalda": ["Dorsal","Trapecio","Erectores espinares"],
+    "Trapecio": ["General"],
     "Hombro": ["Anterior", "Lateral", "Posterior"],
     "Cuádriceps": ["General", "Recto femoral"],
-    "Isquiosurales": ["General", "Porción larga"],
+    "Femoral": ["General"],
     "Glúteo": ["Glúteo mayor", "Glúteo medio"],
     "Bíceps": ["General"],
     "Tríceps": ["General"],
@@ -50,8 +51,10 @@ REGIONES_MAP = {
 EJERCICIOS_DB = {
     "Pecho": {
         "Superior": [
-            "Press inclinado barra 30°", 
-            "Press inclinado mancuernas 45°", 
+            "Press inclinado barra 45°", 
+            "Press inclinado máquina",
+            "Press inclinado mancuernas 45°",
+            "Press inclinado multipower",
             "Press landmine", 
             "Cruces cable polea baja", 
             "Flexiones declinadas",
@@ -61,60 +64,80 @@ EJERCICIOS_DB = {
         ],
         "Medio": [
             "Press banca plano barra", 
+            "Press banca plano máquina",
             "Press mancuernas plano", 
-            "Fondos anillas", 
-            "Press suelo", 
+            "Press plano multipower",
+            "Fondos paralelas (inclinar tronco hacia adelnte 30º)", 
+            "Flexiones planas", 
             "Aperturas mancuernas plano", 
             "Cruces cable altura media", 
             "Flexiones estándar",
-            "Peck deck máquina", 
+            "Peck deck máquina / contractora", 
             "Flexiones anillas", 
             "Press máquina convergente"
         ],
         "Inferior": [
             "Press declinado barra", 
+            "Press declinado máquina",
             "Dips paralelas con lastre", 
             "Cruces cable polea alta", 
             "Press declinado mancuernas",
             "Fondos pectorales inclinación adelante", 
             "Cruces cable de alto a bajo arrodillado"
         ],
-    },
+    }, NOTA para hacer bien los ejercicios: Realizar trayectorias convergentes, es decir, empujar hacia arriba y hacia dentro (tocas con el bíceps el pecho)
     "Espalda": {
         "Dorsal": [
             "Dominadas pronación agarre ancho", 
             "Dominadas supinación", 
-            "Dominadas agarre neutro", 
-            "Jalón polea prono agarre ancho", 
-            "Jalón polea supino", 
-            "Remo Pendlay", 
-            "Remo barra inclinado", 
-            "Pullover polea brazo extendido", 
+            "Dominadas agarre neutro",
+            "Dominadas asistidas máquina",
+            "Jalón unilateral en máquina", 
+            "Jalón unilateral en banco", 
+            "Jalón al pecho prono agarre ancho", 
+            "Jalón al pecho agarre neutro", 
+            "Jalón al pecho supino", 
+            "Remo máquina unilateral brazo pegado al cuerpo (codo a cadera)",
+            "Seal row", 
+            "Remo unilateral en polea apoyado en banco", 
+            "Remo gironda agarre neutro",
+            "Remo con mancuerna", 
+            "Pullover polea brazo extendido unilateral", 
             "Pullover mancuerna",
             "Dominadas agarre cerrado supino", 
             "Jalón agarre neutro cerrado", 
-            "Remo en T", 
-            "Pull-through cable"
+
+
         ],
-        "Trapecio medio/bajo": [
-            "Remo mancuerna", 
+        "Trapecio": [
+            "Remo mancuerna",
+            "Remo barra",
+            "Remo T agarre ancho",
+            "Remo T agarre estrecho",
+            "Remo alto máquina",
+            "Remo alto Gironda agarre ancho",
+            "Jalón espalda alta",
             "Remo cable agarre neutro", 
             "Face pulls", 
             "Remo invertido", 
-            "Seal row", 
             "Chest supported row", 
             "Encogimientos trapecio barra",
             "I-Y-T raises", 
+            "Encogimientos con mancuerna", 
+            "Encogimientos en máquina remo T",
+            "Encogimientos en máquina", 
             "Remo invertido anillas", 
+            "Peso muerto", 
             "Remo mancuerna inclinado 45°", 
             "Remo Kroc"
+NOTA (trapecio): codos ligeramente abiertos y contraer escápulas
         ],
         "Erectores espinales": [
             "Peso muerto convencional", 
             "Peso muerto rumano", 
             "Buenos días", 
             "Extensiones lumbares 45°", 
-            "Hiperextensiones",
+            "Hiperextensiones espalda",
             "Peso muerto trap bar", 
             "Good mornings en caja", 
             "Back extension 90°"
@@ -123,7 +146,9 @@ EJERCICIOS_DB = {
     "Hombro": {
         "Anterior": [
             "Press militar barra", 
+            "Press militar sentado multipower",
             "Press mancuernas sentado", 
+            "Press militar máquina",
             "Press Arnold", 
             "Press landmine unilateral", 
             "Elevaciones frontales barra", 
@@ -135,10 +160,12 @@ EJERCICIOS_DB = {
         ],
         "Lateral": [
             "Elevaciones laterales mancuernas", 
-            "Elevaciones laterales cable", 
+            "Elevaciones laterales cable unilateral", 
+            "Elevaciones laterales máquina", 
             "Press mancuernas sentado", 
+            "Elevaciones laterales cable tumbado", 
             "Upright row agarre ancho", 
-            "Elevaciones laterales inclinado", 
+            "Elevaciones laterales en banco inclinado", 
             "Lu raises",
             "Press mancuernas neutral grip", 
             "Upright row cable agarre ancho", 
@@ -164,51 +191,53 @@ EJERCICIOS_DB = {
             "Sentadilla frontal", 
             "Prensa 45°", 
             "Hack squat", 
+            "Sentadilla multipower",
             "Sentadilla goblet", 
             "Extensión cuádriceps máquina", 
             "Sentadilla búlgara",
             "Sentadilla Zercher", 
             "Belt squat", 
             "Sissy squat asistida", 
-            "Sentadilla Smith inclinada"
+            "Sentadilla Smith inclinada",
+            "Sentadilla búlgara mancuerna pie hacia hacia atrás", 
+            "Sentadilla búlgara multipower pie hacia atrás", 
         ],
         "Recto femoral": [
-            "Zancadas caminando", 
-            "Zancadas búlgaras", 
+
             "Extensión cuádriceps máquina", 
             "Sissy squat", 
             "Step-ups con mancuernas",
-            "Reverse Nordic curl", 
             "Leg extension unilateral", 
-            "Spanish squat con banda"
         ],
     },
     "Isquiosurales": {
         "General": [
-            "Peso muerto rumano", 
+            "Peso muerto rumano",
+            "Peso muerto mancuernas",
+            "Peso muerto piernas semirígidas",  
             "Curl femoral tumbado", 
             "Curl femoral sentado", 
             "Buenos días", 
             "Peso muerto piernas rígidas", 
             "Deslizamientos nórdicos",
-            "Nordic curl", 
+            "Curl Nordico", 
             "Peso muerto unilateral mancuerna", 
             "Curl femoral nórdico inverso", 
-            "Deslizamientos isquios TRX"
-        ],
-        "Porción larga": [
-            "Peso muerto rumano", 
-            "Curl femoral tumbado", 
-            "Buenos días", 
-            "Deslizamientos nórdicos",
+            "Deslizamientos isquios TRX",
             "Glute-ham raise", 
             "Stiff-leg deadlift elevado", 
             "Single-leg RDL"
+            "Sentadilla búlgara mancuerna pie hacia adelante", 
+            "Sentadilla búlgara multipower pie hacia adelante", 
         ],
     },
     "Glúteo": {
         "Glúteo mayor": [
             "Hip thrust barra", 
+            "Hip thrust máquina", 
+            "Sentadilla búlgara mancuerna pie hacia adelante", 
+            "Sentadilla búlgara multipower pie hacia adelante", 
+            "Peso muerto mancuernas",
             "Peso muerto sumo", 
             "Patada glúteo cable", 
             "Prensa unilateral", 
@@ -223,45 +252,59 @@ EJERCICIOS_DB = {
         "Glúteo medio": [
             "Abducción cadera cable", 
             "Clamshells con banda", 
+            "Abducción cadera máquina", 
             "Zancadas laterales", 
             "Step-ups laterales", 
-            "Marcha monstruo con banda",
             "Hip thrust unilateral", 
             "Abducción cadera máquina de pie", 
             "Monster walks banda diagonal", 
             "Fire hydrants con banda"
         ],
     },
+    "Aductor": {
+        "General": [
+            "Aductor máquina", 
+            "Aductor polea"
+        ],
+    },
     "Bíceps": {
         "General": [
             "Curl barra", 
-            "Curl mancuernas alternado", 
-            "Curl martillo", 
-            "Curl predicador", 
-            "Curl cable", 
-            "Curl concentración", 
+            "Curl mancuernas",
+            "Curl barra polea", 
+            "Curl predicador / banco scott", 
+            "Curl cable",
+            "Curlo cable hombro atrás",
+            "Curl concentrado mancuerna", 
             "Curl inclinado 45°",
+            "Curl concentrado polea",
             "Curl araña", 
-            "Curl 21s", 
-            "Curl Zottman", 
-            "Curl cable agarre neutro", 
             "Drag curl"
         ],
+        "Braquial": [
+            "Curl martillo mancuernas", 
+            "Curl martillo polea agarre neutro", 
+
+                   ],
+
     },
     "Tríceps": {
         "General": [
             "Press banca agarre cerrado", 
-            "Extensión tríceps polea cuerda", 
+            "Press agarre cerrado multipower",
+            "Extensión tríceps polea cuerda unilateral", 
             "Extensión tríceps barra Z", 
+            "Extensión tríceps polea cuerda", 
+            "Press francés mancuernas",
+            "Press francés barra",
             "Extensión francesa", 
             "Patada tríceps", 
             "Dips tríceps", 
-            "Extensión overhead cable",
-            "JM Press", 
-            "Overhead extension cable barra recta", 
-            "Skull crushers inclinado 30°", 
+            "Extensión cable polea sobre la cabeza (Katana)",
+            "Extensión mancuerna sobre la cabeza (Katana)",
+            "Fondos",
             "Cable pushdown agarre inverso", 
-            "Tate press", 
+            "Kaz press multipower", 
             "Diamond push-ups"
         ],
     },
@@ -269,6 +312,7 @@ EJERCICIOS_DB = {
         "Recto abdominal": [
             "Crunch abdominal", 
             "Elevaciones piernas colgado", 
+            "Elevaciones piernas máquina",
             "Crunch cable polea alta", 
             "Rueda abdominal", 
             "Plancha",
@@ -285,17 +329,7 @@ EJERCICIOS_DB = {
             "Landmine rotation", 
             "Copenhagen plank", 
             "Cable woodchop de alto a bajo", 
-            "Suitcase carry"
-        ],
-        "Transverso": [
-            "Plancha", 
-            "Dead bug", 
-            "Pallof press",
-            "Ab vacuum", 
-            "Bird dog", 
-            "Stir the pot en fitball", 
-            "Hollow body hold"
-        ],
+            "Suitcase carry"]
     },
     "Gemelos": {
         "Gastrocnemio": [
@@ -311,24 +345,25 @@ EJERCICIOS_DB = {
             "Elevación gemelos sentado mancuernas",
             "Elevación gemelos sentado máquina", 
             "Calf press en prensa 45°", 
-            "Tibialis raise"
         ],
     },
 }
 
 
 VOLUMEN_OPTIMO = {
-    "Pecho": {"min": 10, "max": 20},
-    "Espalda": {"min": 12, "max": 22},
+    "Pectoral": {"min": 10, "max": 20},
+    "Aductor": {"min": 6, "max": 12},
+    "Dorsal": {"min": 10, "max": 20},
+    "Trapecio": {"min": 8, "max": 16},
     "Hombro Anterior": {"min": 6, "max": 10},
     "Hombro Lateral": {"min": 8, "max": 14},
     "Hombro Posterior": {"min": 8, "max": 12},
-    "Cuádriceps": {"min": 10, "max": 20},
-    "Isquiosurales": {"min": 8, "max": 16},
-    "Glúteo": {"min": 8, "max": 16},
-    "Bíceps": {"min": 8, "max": 18},
-    "Tríceps": {"min": 8, "max": 18},
-    "Core": {"min": 6, "max": 15},
+    "Cuádriceps": {"min": 12, "max": 20},
+    "Femoral": {"min": 10, "max": 16},
+    "Glúteo": {"min": 6, "max": 14},
+    "Bíceps": {"min": 10, "max": 18},
+    "Tríceps": {"min": 10, "max": 18},
+    "Core": {"min": 12, "max": 20},
     "Gemelos": {"min": 8, "max": 16},
 }
 
